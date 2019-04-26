@@ -10,38 +10,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MedaCy Demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>MedaCy</title>
 </head>
 <body>
-<h1>MedaCy Demo</h1>
-
-MedaCy is a medical text mining framework built over spaCy to facilitate the engineering, training and application of machine learning models for medical information extraction.
-This demo allows you to select a model created by the NLP@VCU team and see your results instantly.
-<ul>
-    <li>Clinical Notes is designed to evaluate text you might find in a physician's report for a patient visit.</li>
-    <li>Nanodrug Labels is designed to evaluate text from drug labels, like those that come with prescriptions.</li>
-</ul>
-
-<form method="POST">
-    <!-- Select which model you want to use -->
-    Choose which model you want to use:<br />
-    <!-- NOTE the values for these buttons must match the name of the dictionary key
-         for that model in app.py
-     -->
-    <input type="radio" name="model" value="clinical" checked="checked">Clinical Notes</input>
-    <input type="radio" name="model" value="fda">Nanodrug Labels</input>
-    <br />
-
-    <!-- Enter desired text -->
-    <input type="text" name="text", size="40">
-    <!-- Hit enter to generate predictions, or click "submit" -->
-    <input type="submit" style="display: none" />
-    <input type="submit">
-</form>
 
 
-<!-- See the displaCy output -->
-{{ predictions|safe }}
+<div class="container text-center">
+    <div class="">
+
+        <div class="card border-bottom-0">
+            <h5 class="card-header" style="color: blue">Extracting Information from Medical Text with Machine Learning</h5>
+            MedaCy is a medical text mining framework we built to facilitate the engineering, training and application
+            of machine learning models for medical information extraction.
+
+            This demo provides an interface to the predictive functionality of a model trained to extract
+            <br>
+            <br>
+
+            <blockquote>
+                <h2>Drug, Form, Route, ADE, Reason, Frequency, Duration, Dosage, Strength </h2>
+            </blockquote>
+
+            information from real-world patient clinical notes.
+
+            <br>
+
+            <ul class="list-group border-0">
+                <li class="list-group-item border-0" >Clinical Notes is a machine learning trained to extract from text you might find in a physician's
+                    report
+                    for a patient visit.
+                </li>
+                <li class="list-group-item border-0">Nanodrug Labels is machine learning model trained to extract from FDA Nanoparticle drug labels.
+                </li>
+            </ul>
+
+            <form method="POST">
+
+                <label class="radio-inline px-4">
+                    <input type="radio" name="model" value="clinical" checked="checked" class="px-2"> <h4>Clinical
+                    Notes</h4></input>
+                </label>
+
+                <label class="radio-inline px-4">
+                    <input type="radio" name="model" value="fda" class="px-2"> <h4>Nanodrug Labels</h4></input>
+                </label>
+
+
+                <br/>
+
+                <!-- Enter desired text -->
+                <input type="text" name="text" , size="40">
+                <!-- Hit enter to generate predictions, or click "submit" -->
+                <input type="submit" style="display: none"/>
+                <input type="submit">
+            </form>
+        </div>
+
+        <br>
+        <div class="">
+            <h5 class="card-header px-5" style="color: blue">Model Predictions</h5>
+            <br>
+            {{ predictions|safe }}
+        </div>
+    </div>
+
+
+</div>
+
+{##}
+{#<script>#}
+{#    setInterval(function() {#}
+{#  document.body.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);#}
+{#}, 2000)#}
+{#</script>#}
+{##}
+{#<br>#}
+{#<br>#}
+{##}
+{##}
+{#<div class="text-center">#}
+{#    <!-- See the displaCy output -->#}
+{#    #}
+{#</div>#}
+
 
 </body>
 </html>
